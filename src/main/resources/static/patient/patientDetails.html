@@ -1,0 +1,184 @@
+<div>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#!/">
+   		<img src="./images/homeicon.png" alt="Logo" style="width:50px;" />
+   </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#!/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='#!/medicine'>Medicine</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='#!/visit'>Visit</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="id" />
+        <button class="btn btn-outline-success my-2 my-sm-0" ng-click="getPatientByID()" >Search</button>
+      </form>
+    </div>
+  </nav>
+ </div>
+
+<div class="bs-container">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Patient List</button>									
+                </h2>
+            </div>
+         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+         <div class="card-body">
+
+
+          <div class="table-responsive-xl">
+  
+          <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Patient ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in patData">
+                <td>{{ x.patID }}</td>
+                <td>{{ x.patFirstName }}</td>
+                <td>{{ x.patLastName }}</td>
+                <td>{{ x.patGender}}</td>
+                <td>{{ x.patMobile }}</td>
+                <td><a ng-click="editPatient(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removePatient(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
+            </tr>
+ 			</tbody>
+        </table>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+  <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Add/Edit Patient</button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+	 
+ 
+		<h2>Add/Edit Patient</h2> 
+        <form ng-submit="createPatient()" name="patCtrl">
+        <div class="table-responsive-xl">
+            <table class="table">
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" ng-model="patCtrl.patFirstName" size="60" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" ng-model="patCtrl.patLastName" size="60" /></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="number" min="1000000000" max="9999999999" ng-model="patCtrl.patMobile" size="60" /></td>
+                </tr>
+                <tr>
+                    <td>Please select your gender:</td>
+                    <td>
+					<div class="form-check-inline">
+      					<label class="form-check-label" for="radio1">
+        					<input type="radio" class="form-check-input" id="radio1" name="gender" value="Male" ng-model="patCtrl.patGender"  />Male
+              			</label>
+    				</div>
+    				<div class="form-check-inline">
+      					<label class="form-check-label" for="radio2">
+        					<input type="radio" class="form-check-input" id="radio2" name="gender" value="Female" ng-model="patCtrl.patGender" />Female
+      					</label>
+    				</div>
+    				<div class="form-check-inline">
+      					<label class="form-check-label" for="radio3">
+        					<input type="radio" class="form-check-input" id="radio3" name="gender" value="Other" ng-model="patCtrl.patGender" />Other
+      					</label>
+    				</div>
+					
+                    </td>
+                </tr>
+                <tr>
+                <td>Date of Birth</td>
+                <td><input type="date" id="datepicker1"   ng-model="patCtrl.patDOB" width="276" /></td>
+                </tr>
+                <tr>
+                <td>Date of First Visit</td>
+                <td><input type="date" id="datepicker2"   ng-model="patCtrl.patFirstVisit" width="276" /></td>
+                </tr>
+                <tr>
+                    <td>Are you Diabetic?</td>
+                    <td>
+                                     
+						<div class="form-check-inline">
+					        <label class="form-check-label" for="radio4">
+					             <input type="radio" class="form-check-input" id="radio4" name="diabeticFlag" value="Yes" ng-model="patCtrl.diabeticFlag" />Yes
+					        </label>
+					    </div>
+					    <div class="form-check-inline">
+					      	<label class="form-check-label" for="radio5">
+					        	<input type="radio" class="form-check-input" id="radio5" name="diabeticFlag" value="No" ng-model="patCtrl.diabeticFlag"  />No
+					        </label>
+					    </div>
+    
+		    		
+                   </td>
+                </tr>
+  				        <tr>
+                    <td>Blood Pressure Level</td>
+                    <td>
+                    
+                    <div class="form-check-inline">
+      					<label class="form-check-label" for="radio6">
+        					<input type="radio" class="form-check-input" id="radio6" name="bloodPressure" value="Normal" ng-model="patCtrl.bloodPressure" />Normal
+              			</label>
+    				</div>
+    				<div class="form-check-inline">
+      					<label class="form-check-label" for="radio7">
+        					<input type="radio" class="form-check-input" id="radio7" name="bloodPressure" value="High" ng-model="patCtrl.bloodPressure" />High
+      					</label>
+    				</div>
+    				<div class="form-check-inline">
+      					<label class="form-check-label" for="radio8">
+        					<input type="radio" class="form-check-input" id="radio8" name="bloodPressure" value="Low" ng-model="patCtrl.bloodPressure" />Low
+      					</label>
+    				</div>
+                  
+                   </td>
+                </tr>
+  				 <tr>
+                    <td colspan="2"><input class="btn btn-primary" type="reset" ng-click="resetform()" value="Reset"></td>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+                    
+                    
+                </tr>
+                </tbody>
+            </table>
+    	</div>
+    	</form>
+      	</div>
+      	    	</div>
+      	    	    	</div>
+      	    	    	    	</div>
+      	    	    	    	    	</div>
+ 		

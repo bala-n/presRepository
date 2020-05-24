@@ -1,0 +1,105 @@
+<div>
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <a class="navbar-brand" href="#!/">
+    		<img src="./images/homeicon.png" alt="Logo" style="width:50px;">
+  	   </a>
+     	  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#!/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='#!/'>Patient</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='#!/visit'>Visit</a>
+        </li>
+       </ul>
+      
+      <form class="form-inline my-2 my-lg-0" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search with drug name" aria-label="Search" ng-model="drugid" />
+        <button class="btn btn-outline-success my-2 my-sm-0" ng-click="getMedicineByID()" >Search</button>
+      </form>
+    </div>
+  </nav>
+ </div>
+ 
+<div class="bs-container">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Medicine Catalog</button>									
+                </h2>
+            </div>
+         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+         <div class="card-body">
+ 
+ <div class="table-responsive-xl">
+  
+          <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Drug Name</th>
+                <th scope="col">Drug Description</th>
+                <th scope="col">Drug Manufacture</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in medData">
+                <td>{{ x.drugName }}</td>
+                <td>{{ x.drugDescription }}</td>
+                <td>{{ x.drugManufacturer }}</td>
+                <td><a ng-click="editMedicine(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removeMedicine(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
+            </tr>
+ 			</tbody>
+        </table>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Add/Edit Medicine</button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body"> 
+        <form ng-submit="createMedicine()" name="medCtrl">
+        <div class="table-responsive-xl">
+            <table class="table">
+            <tbody>
+                <tr>
+                    <td>Drug Name</td>
+                    <td><input type="text" ng-model="medCtrl.drugName" size="60"  ng-disabled="editFlag"  /></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><input type="textarea" ng-model="medCtrl.drugDescription" size="60" /></td>
+                </tr>
+                <tr>
+                    <td>Manufacturer</td>
+                    <td><input type="text" ng-model="medCtrl.drugManufacturer" size="60" /></td>
+                </tr>
+                 <tr>
+                    <td colspan="2"><input class="btn btn-primary" ng-click="resetform()" type="reset" value="Reset"></td>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+                </tr>
+                </tbody>
+            </table>
+    	</div>
+    	</form>
+ </div>
+ </div>
+ </div>
+ </div>

@@ -1,0 +1,12 @@
+body{
+     font-size: 16px;
+     background-color:#f1f1f1;
+     font-family:'Arial';
+      width: 90%;
+      margin: 0 auto;    
+ }
+  
+  
+  .bs-container{
+        margin: 20px;
+        }
