@@ -33,54 +33,12 @@
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
-                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Patient List</button>									
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Add/Edit Patient</button>									
                 </h2>
             </div>
          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
          <div class="card-body">
-
-
-          <div class="table-responsive-xl">
-  
-          <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Patient ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="x in patData">
-                <td>{{ x.patID }}</td>
-                <td>{{ x.patFirstName }}</td>
-                <td>{{ x.patLastName }}</td>
-                <td>{{ x.patGender}}</td>
-                <td>{{ x.patMobile }}</td>
-                <td><a ng-click="editPatient(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removePatient(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
-            </tr>
- 			</tbody>
-        </table>
- </div>
- </div>
- </div>
- </div>
- </div>
- 
-  <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Add/Edit Patient</button>
-                </h2>
-            </div>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-	 
- 
-		<h2>Add/Edit Patient</h2> 
+				<h2>Add/Edit Patient</h2> 
         <form ng-submit="createPatient()" name="patCtrl">
         <div class="table-responsive-xl">
             <table class="table">
@@ -176,6 +134,48 @@
             </table>
     	</div>
     	</form>
+
+         </div>
+ </div>
+ </div>
+ </div>
+ 
+  <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Patient List</button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+	  <div class="table-responsive-xl">
+  
+          <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Patient ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in patData">
+                <td>{{ x.patID }}</td>
+                <td>{{ x.patFirstName }}</td>
+                <td>{{ x.patLastName }}</td>
+                <td>{{ x.patGender}}</td>
+                <td>{{ x.patMobile }}</td>
+                <td><a ng-click="editPatient(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removePatient(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
+            </tr>
+ 			</tbody>
+        </table>
+ </div>
+ 
+ 
+		
       	</div>
       	    	</div>
       	    	    	</div>

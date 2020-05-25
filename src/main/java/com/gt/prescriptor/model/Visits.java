@@ -16,10 +16,14 @@ public class Visits {
 	public ObjectId _id;
 	
 	private int patID;
+	
 	private String patFirstName;
 	private String patLastName;
 	private String patLocation;
 	private String visitDate;
+	private String visitPurpose;
+	private String drugAllergy;
+	private String treatmentNotes;
 	private PrescriptionRecord []presList;
 	private String requestStatus;
 	
@@ -72,6 +76,24 @@ public class Visits {
 	}
 	public void setPresList(PrescriptionRecord[] presList) {
 		this.presList = presList;
+	}
+	public String getVisitPurpose() {
+		return visitPurpose;
+	}
+	public void setVisitPurpose(String visitPurpose) {
+		this.visitPurpose = visitPurpose;
+	}
+	public String getDrugAllergy() {
+		return drugAllergy;
+	}
+	public void setDrugAllergy(String drugAllergy) {
+		this.drugAllergy = drugAllergy;
+	}
+	public String getTreatmentNotes() {
+		return treatmentNotes;
+	}
+	public void setTreatmentNotes(String treatmentNotes) {
+		this.treatmentNotes = treatmentNotes;
 	}
 	
 }

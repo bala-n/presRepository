@@ -35,71 +35,69 @@
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
-                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Medicine Catalog</button>									
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">Add/Edit Medicine</button>									
                 </h2>
             </div>
-         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-         <div class="card-body">
+        	<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+         		<div class="card-body">
+			 		<form ng-submit="createMedicine()" name="medCtrl">
+			        <div class="table-responsive-xl">
+			            <table class="table">
+			            <tbody>
+			                <tr>
+			                    <td>Drug Name</td>
+			                    <td><input type="text" ng-model="medCtrl.drugName" size="60"  ng-disabled="editFlag"  /></td>
+			                </tr>
+			                <tr>
+			                    <td>Description</td>
+			                    <td><input type="textarea" ng-model="medCtrl.drugDescription" size="60" /></td>
+			                </tr>
+			                <tr>
+			                    <td>Manufacturer</td>
+			                    <td><input type="text" ng-model="medCtrl.drugManufacturer" size="60" /></td>
+			                </tr>
+			                 <tr>
+			                    <td colspan="2"><input class="btn btn-primary" ng-click="resetform()" type="reset" value="Reset"></td>
+			                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+			                </tr>
+			                </tbody>
+			            </table>
+			    	</div>
+			    	</form>
+				 </div>
+ 			</div>
+ 		</div>
+ 	</div>
  
- <div class="table-responsive-xl">
-  
-          <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Drug Name</th>
-                <th scope="col">Drug Description</th>
-                <th scope="col">Drug Manufacture</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="x in medData">
-                <td>{{ x.drugName }}</td>
-                <td>{{ x.drugDescription }}</td>
-                <td>{{ x.drugManufacturer }}</td>
-                <td><a ng-click="editMedicine(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removeMedicine(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
-            </tr>
- 			</tbody>
-        </table>
- </div>
- </div>
- </div>
- </div>
- </div>
- 
- <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Add/Edit Medicine</button>
-                </h2>
-            </div>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body"> 
-        <form ng-submit="createMedicine()" name="medCtrl">
-        <div class="table-responsive-xl">
-            <table class="table">
-            <tbody>
-                <tr>
-                    <td>Drug Name</td>
-                    <td><input type="text" ng-model="medCtrl.drugName" size="60"  ng-disabled="editFlag"  /></td>
-                </tr>
-                <tr>
-                    <td>Description</td>
-                    <td><input type="textarea" ng-model="medCtrl.drugDescription" size="60" /></td>
-                </tr>
-                <tr>
-                    <td>Manufacturer</td>
-                    <td><input type="text" ng-model="medCtrl.drugManufacturer" size="60" /></td>
-                </tr>
-                 <tr>
-                    <td colspan="2"><input class="btn btn-primary" ng-click="resetform()" type="reset" value="Reset"></td>
-                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit" /></td>
-                </tr>
-                </tbody>
-            </table>
-    	</div>
-    	</form>
- </div>
- </div>
- </div>
+ 	<div class="card">
+          <div class="card-header" id="headingTwo">
+               <h2 class="mb-0">
+                   <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Medicine Catalog</button>
+               </h2>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body"> 
+               	 <div class="table-responsive-xl">
+	  		        <table class="table">
+			           	<thead>
+				            <tr>
+				                <th scope="col">Drug Name</th>
+				                <th scope="col">Drug Description</th>
+				                <th scope="col">Drug Manufacture</th>
+				                <th scope="col">Actions</th>
+				            </tr>
+			           	</thead>
+			           	<tbody>
+			            	<tr ng-repeat="x in medData">
+			                	<td>{{ x.drugName }}</td>
+			                	<td>{{ x.drugDescription }}</td>
+			                	<td>{{ x.drugManufacturer }}</td>
+			                	<td><a ng-click="editMedicine(x)" class="btn"><img src="./images/edit.png" alt="Edit" style="width:20px;" /></a> | <a ng-click="removeMedicine(x)" class="btn"><img src="./images/delete.png" alt="Edit" style="width:20px;" /></a></td>
+			            	</tr>
+			 			</tbody>
+			        </table>
+	 			</div>
+	   		</div>
+ 		</div>
+ 	</div>
  </div>

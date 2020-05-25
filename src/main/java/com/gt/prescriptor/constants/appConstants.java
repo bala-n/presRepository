@@ -5,6 +5,7 @@ public static final String PATIENT_COLLECTION="patCollection";
 public static final String MEDICINE_COLLECTION="medCollection";
 public static final String PATIENT_VISITS="patVisits";
 public static final String SEQUENCE_GENERATOR="seqGen";
+public static final String TREATMENT_COLLECTION="treatmentCollection";
 public static final String SUCCESS="Success";
 public static final String FAILURE="Failure";
 public static String DRUG_NAME="drugName";

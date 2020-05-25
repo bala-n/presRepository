@@ -62,6 +62,13 @@ public class MedicineCatController {
 		return data;
 	}
 	
+	@RequestMapping(path="/getMedList", method=RequestMethod.GET)
+	public @ResponseBody Map<String,Object> getMedList(){
+		Map<String,Object> data =new HashMap<>();
+		data.put("data", repo.getMedList());
+		return data;
+	}
+	
 	
 }
 	

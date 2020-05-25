@@ -9,12 +9,31 @@ angular.module('app').controller('visitsCtrl', ['$scope', '$http', function($sco
         $http.get('http://localhost:1111/api/v1/visit/getPatientVisits').then(successCallback, errorCallback);
         function successCallback(response){
             $scope.formatData(response);
+            $http.get('http://localhost:1111/api/v1/medicine/getMedicines').then(successCallback, errorCallback);
+            function successCallback(response1){
+                $scope.formatMedicineData(response1);
+            }
+            function errorCallback(error){
+                console.log(error);
+            }
+            
         }
         function errorCallback(error){
             console.log(error);
         }   
+        
+       
     }
 
+    
+    $scope.formatMedicineData = function(response){
+    	$scope.drugNameList = [];
+    	angular.forEach(response.data.data,function(data){
+        	$scope.drugNameList.push(data.drugName);
+        })
+        console.log($scope.drugNameList);
+    }
+    
     $scope.getVisitsByID=function(){
     	if($scope.id==""){
     		initFn();
@@ -158,18 +177,15 @@ angular.module('app').controller('visitsCtrl', ['$scope', '$http', function($sco
     	 		}
     	  	}
         function errorCallback(error){
-        	console.log("HelloWorld");
         	console.log(error);
         }   
      }
 
     
-    
    //Create and Edit Function Submission 
     $scope.createVisit = function(data){
         
     	var dataObj ={};
-    	
     	
     	if($scope.editFlag==true){
     		dataObj["patID"] =$scope.tmpPatID;
@@ -194,35 +210,8 @@ angular.module('app').controller('visitsCtrl', ['$scope', '$http', function($sco
     		dataObj["visitDate"]= formatDate($scope.visCtrl.visitDate);
         	dataObj["presList"]=$scope.presList;
     		$scope.getPatientByID($scope.visCtrl.patID,dataObj);
-    		
-    		//dataObj["patFirstName"] =$scope.patDet.patFirstName;
-    		//dataObj["patLastName"] =$scope.patDet.patLastName;
     	}
-    	
-    	//dataObj["patFirstName"] =$scope.visCtrl.patFirstName;
-    	//dataObj["patLastName"] =$scope.visCtrl.patLastName;
-    	/*dataObj["visitDate"]= formatDate($scope.visCtrl.visitDate);
-    	dataObj["presList"]=$scope.presList;
-    	
-    	
-    	if($scope.editFlag==true){
-    		$http.post("http://localhost:1111/api/v1/visit/updateVisit", dataObj).then(successCallback, errorCallback);
-    		$scope.editFlag=false;
-    	}else{
-    	        $http.post("http://localhost:1111/api/v1/visit/addPatientVisit", dataObj).then(successCallback, errorCallback);
-    	}
-    	 function successCallback(response){
-            console.log(response);
-            $scope.visCtrl.patFirstName = "";
-            $scope.visCtrl.patLastName = "";
-            $scope.visCtrl.visitDate = "";
-            $scope.patDet={};
-            
-        }
-        function errorCallback(error){
-            console.log(error);
-        }*/
-    }
+   }
 
     
 }]);

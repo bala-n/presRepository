@@ -35,7 +35,7 @@ public class MedicineRepository {
 	
 	public Medicines updateMedicine(Map<String,Object> medRecord) {
 	    Medicines medicine = new Medicines();	
-		try {
+	    try {
 			Query query=new Query();
 			query.addCriteria(Criteria.where(appConstants.DRUG_NAME).is(medRecord.get("drugName")));
 			Update update =new Update();
@@ -65,8 +65,21 @@ public class MedicineRepository {
 		return medicine;
 	}
 	
+	public List<Medicines>  getMedList(){
+		List<Medicines> medicineLst=new ArrayList<>();
+		try {
+			Query query=new Query();
+			query.fields().include(appConstants.DRUG_NAME);
+			medicineLst=mongoTemplate.find(query,Medicines.class);
+			System.out.println(medicineLst);
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return medicineLst;
+	}
 	
-	public List<Medicines> getMedicines(){
+	public List<Medicines> getMedicines(){	
 		List<Medicines> medicineLst = new ArrayList<>();
 		try {
 			medicineLst=mongoTemplate.findAll(Medicines.class);

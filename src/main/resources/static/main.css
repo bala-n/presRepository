@@ -1,14 +1,19 @@
 body {
-  padding: 0;
-  margin: 0;
+  width: 90%;
+  margin: 0 auto;
   background: #f2f6e9;
+ 
 }
 
 /*--- navigation bar ---*/
 
 .navbar {
   background:#6ab446;
-}
+  margin: 0 auto;  
+  width: 96%;
+  
+ 
+ }
 
 .nav-link,
 .navbar-brand {
